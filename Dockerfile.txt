@@ -1,0 +1,35 @@
+from selenium import webdriver
+options = webdriver.ChromeOptions()
+options.add_argument(&#39;--ignore-ssl-errors=yes&#39;)
+options.add_argument(&#39;--ignore-certificate-errors&#39;)
+driver = webdriver.Remote(
+command_executor=&#39;http://localhost:4444/wd/hub&#39;,
+options=options
+)
+driver.get(&quot;https://www.browserstack.com/&quot;)
+driver.find_element_by_link_text(&quot;Get started free&quot;).click()
+seleniumDockerTest.py
+from selenium import webdriver
+import time
+print(&quot;Test Execution Started&quot;)
+options = webdriver.ChromeOptions()
+options.add_argument(&#39;--ignore-ssl-errors=yes&#39;)
+options.add_argument(&#39;--ignore-certificate-errors&#39;)
+driver = webdriver.Remote(
+command_executor=&#39;http://localhost:4444/wd/hub&#39;,
+options=options
+)
+#maximize the window size
+driver.maximize_window()
+time.sleep(10)
+#navigate to browserstack.com
+driver.get(&quot;https://www.browserstack.com/&quot;)
+time.sleep(10)
+#click on the Get started for free button
+
+driver.find_element_by_link_text(&quot;Get started free&quot;).click()
+time.sleep(10)
+#close the browser
+driver.close()
+driver.quit()
+print(&quot;Test Execution Successfully Completed!&quot;)
